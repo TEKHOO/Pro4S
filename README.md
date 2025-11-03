@@ -25,21 +25,7 @@ The dataset can be found in `/Pro4S/dataset`
     conda activate pro4s
 
     ```
-    Install PyTorch that matches your CUDA version.
-    ```bash
-    # CUDA 10.2
-    conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=10.2 -c pytorch
-    # CUDA 11.3
-    conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.3 -c pytorch
-    # CUDA 11.6
-    conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.6 -c pytorch -c conda-forge
-    ```
-    If your CUDA version is ≥ 12.0, you also need to run:
-    ```bash
-    conda install pytorch==1.12.0 torchvision==0.13.0 torchaudio==0.12.0 cudatoolkit=11.6 -c pytorch -c conda-forge
-    pip install torch==2.3.1
-
-    ```
+    Our CUDA version is 12.2. If your CUDA version does not match and causes the YML file to be unusable, please modify the YML file or adjust your CUDA version.
    
     Additionally, it is necessary to install an environment under conda that can successfully run [Masif](https://github.com/LPDI-EPFL/masif), as instructed by [Masif](https://github.com/LPDI-EPFL/masif), and name it `masif`.
     
@@ -54,25 +40,38 @@ The dataset can be found in `/Pro4S/dataset`
 
     ⚠️ It is recommended that the PDB file contain only the single protein chain to be predicted, and it should be named Chain A.
    
-    If you have a solubility label file for the protein, place it in `/Pro4S/test/pdb`. If not, the model will default the true label to 0 in the output file.
+    If you have a solubility label file for the protein, place it as `/Pro4S/test/test.txt`. If not, the model will default the true label to 0 in the output file.
 
-3. **Use Masif to Calculate Protein Surface**  
+3. **Calculate Protein Feature**  
    
     Run `masif.sh`:
+
+    ⚠️ If the PDB file name contains special characters, we will automatically exclude it to prevent errors in Masif.
     
     ```bash
     cd Pro4S/scripts/
+    conda activate masif
     bash masif.sh
+    ```
+    
+    Run `seq_structure_feature.sh`:
+    
+    ```bash
+    conda deactivate
+    conda activate pro4s
+    bash seq_structure_feature.sh
     ```
 
 4. **Run the Model**  
    
-    By default, we use the finetune model from the article for testing. If you need to change it, modify the `-ck_point` in `Pro4S/scripts/test.sh`. Available options are `classification`, `regression`, and `finetune`.
+    By default, we use the finetune model from the article for testing. If you need to change it, modify the `-ck_point` . Available options are `classification`, `regression`, and `finetune`.
     
     Run `test.sh`:
     
     ```bash
-    bash test.sh
+    conda activate pro4s
+    python test.py \
+    -ck_point finetune
     ```
 
 6. **View the Output**
