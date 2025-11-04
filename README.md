@@ -25,7 +25,7 @@ The dataset can be found in `/Pro4S/dataset`
     conda activate pro4s
 
     ```
-    Our CUDA version is 12.2. If your CUDA version does not match and causes the YML file to be unusable, please modify the YML file or adjust your CUDA version.
+    Our CUDA version is ≥ 12.2. If your CUDA version does not match and causes the YML file to be unusable, please modify the YML file or adjust your CUDA version.
    
     Additionally, it is necessary to install an environment under conda that can successfully run [Masif](https://github.com/LPDI-EPFL/masif), as instructed by [Masif](https://github.com/LPDI-EPFL/masif), and name it `masif`.
     
