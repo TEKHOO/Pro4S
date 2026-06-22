@@ -2,7 +2,6 @@
 Pro4S is a novel multimodal model that unifies qualitative and quantitative protein solubility prediction. By integrating protein language models, structural data, and surface descriptors via contrastive learning, it achieves superior accuracy and robustness. Pro4S outperforms existing methods and effectively screens *de novo* proteins, significantly increasing experimental expression success to accelerate protein engineering.   
 
 
-![image](https://github.com/TEKHOO/Pro4S/blob/main/Pro4S.png)
 ## Dataset
 The dataset can be found in `/Pro4S/dataset`
 
