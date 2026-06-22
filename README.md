@@ -5,6 +5,8 @@ Pro4S is a novel multimodal model that unifies qualitative and quantitative prot
 ## Dataset
 The dataset can be found in `/Pro4S/dataset`
 
+Predicted PDB files can be downloaded from [huggingface](https://huggingface.co/qj666/Pro4S/tree/main).  
+
 
 ## Software Prerequisites
 * [ESM2-3B](https://github.com/facebookresearch/esm) - We use esm2_t36_3B_UR50D to get sequence embeddings.
